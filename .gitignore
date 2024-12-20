@@ -11,6 +11,10 @@
 *.sln.docstates
 *.gz
 *.vcf
+# Dossiers spécifiques
+RESULTS/
+Results/
+DATA/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

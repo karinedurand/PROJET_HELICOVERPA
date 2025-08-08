@@ -71,8 +71,12 @@ while read -r CHR; do
         -L "$CHR" \
         --all-sites \
         -O "$OUT_VCF"
+    
 
-    /storage/simple/projects/faw_adaptation/programs/htslib-1.9/tabix -p vcf "$OUT_VCF"
-    echo "→ VCF ready for pixy: $OUT_VCF"
+gunzip -c "$OUT_VCF" | bgzip -c > "${OUT_DIR}/${CHR}.vallsites.vcf.gz"
+
+# Indexer le VCF généré
+/storage/simple/projects/faw_adaptation/programs/htslib-1.9/tabix -p vcf "${OUT_DIR}/${CHR}.allsites.vcf.gz"
+
 
 done < "$CHROM_LIST"
